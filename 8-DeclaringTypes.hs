@@ -112,9 +112,31 @@ treeElem x (Node a left right)
 -- Remember different classes!! Ord, Eq, etc..
 --https://www.haskell.org/onlinereport/basic.html
 
+-- Typeclasses
 
+{-| This is how Eq class is defined in the standard prelude
+class Eq a where  
+    (==) :: a -> a -> Bool  
+    (/=) :: a -> a -> Bool  
+    x == y = not (x /= y)  
+    x /= y = not (x == y) 
+-}
 
+data TrafficLight = Red | Yellow | Green
 
+-- Important note : class id for defining new typeclasses and instance is for making our types instances of
+    -- typeclasses
+
+instance Eq TrafficLight where
+        Red == Red = True
+        Green == Green = True 
+        Yellow == Yellow = True
+        _ == _ = False
+
+instance Show TrafficLight where  
+    show Red = "Red light"  
+    show Yellow = "Yellow light"  
+    show Green = "Green light"
 
 
 
